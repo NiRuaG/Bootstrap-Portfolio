@@ -5,3 +5,7 @@
 #about-copy p {  
   line-height: 2; 
 }
+
+#about-copy p:last-of-type {
+  margin-bottom: 0; /* override Bootstrap reboot */
+}
