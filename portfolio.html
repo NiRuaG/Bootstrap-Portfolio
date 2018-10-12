@@ -115,7 +115,6 @@
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          console.log(JSON.parse(this.response).data[0].images);
           document.getElementById("giphyImg")
             .setAttribute("src", 
               JSON.parse(this.response)
