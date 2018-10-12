@@ -74,14 +74,14 @@
         </div>
 
         <div class="col-md-5 mb-2">
-          <a class="card portfolio-item">
-            <img src="./assets/images/technics4.jpg" alt="Info Widget, Preview image" class="img-fluid">
+          <a class="card portfolio-item" href="./../GiphyAPI/">
+            <img id="giphyImg" src="#" alt="Random gif Image" class="img-fluid">
             <div class="card-img-overlay my-bg-primary my-text-white p-2 banner">
-              <h5 class="card-title text-nowrap my-text-family text-center m-0">Rutgers Info Widget</h5>
+              <h5 class="card-title text-nowrap my-text-family text-center m-0">Gif Tastic</h5>
             </div>
             <div class="card-img-overlay my-text-primary descrip p-3">
-              <h5 class="card-title text-nowrap my-text-family">Rutgers Info Widget</h5>
-              <p class="card-text">Info Widget project description text.</p>
+              <h5 class="card-title text-nowrap my-text-family">Giftastic Giphy API</h5>
+              <p class="card-text">View animated gif's on topics of your choice.</p>
             </div>
           </a>
         </div>
@@ -111,4 +111,19 @@
     </div>
   </footer>
 
+  <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(JSON.parse(this.response).data[0].images);
+          document.getElementById("giphyImg")
+            .setAttribute("src", 
+              JSON.parse(this.response)
+              .data[0].images.fixed_width.url);
+        }
+      };
+  
+      xhttp.open("GET", "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=1&fmt=json&rating=g", true);
+      xhttp.send();
+    </script>
 </body>
